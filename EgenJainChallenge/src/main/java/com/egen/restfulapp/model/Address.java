@@ -1,4 +1,4 @@
-package com.egen.restfullapp.model;
+package com.egen.restfulapp.model;
 
 import java.util.UUID;
 

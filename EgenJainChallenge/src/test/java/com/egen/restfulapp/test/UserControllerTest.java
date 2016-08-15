@@ -1,4 +1,4 @@
-package com.egen.restfullapp.test;
+package com.egen.restfulapp.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -16,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.egen.restfulapp.Main;
-import com.egen.restfullapp.model.User;
+import com.egen.restfulapp.model.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -28,10 +28,11 @@ import spark.utils.IOUtils;
  */
 public class UserControllerTest {
 
+	// Sets the spark server port to 8080
 	private static Integer port = 8080;
 
 	/**
-	 * Sets the up.
+	 * Starts the server.
 	 */
 	@BeforeClass
 	public static void setUp() {
@@ -41,7 +42,7 @@ public class UserControllerTest {
 	}
 
 	/**
-	 * After class.
+	 * Stops the spark server.
 	 */
 	@AfterClass
 	public static void afterClass() {
@@ -56,13 +57,13 @@ public class UserControllerTest {
 	@Test
 	public void createUser() {
 		try {
-			JsonObject jsonParam = new JsonObject();
 
+			JsonObject jsonParam = new JsonObject();
 			jsonParam.addProperty("firstName", "Ramesha");
 			jsonParam.addProperty("email", "raj_Leffler68@gmail.com");
 			jsonParam.addProperty("city", "mysore");
 			String json = jsonParam.toString();
-			TestResponse res = request("POST", json, "/createUser");
+			TestResponse res = request("POST", json, "/users");
 			assertEquals(200, res.status);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +83,7 @@ public class UserControllerTest {
 			jsonParam.addProperty("lastName", "Hinosha");
 
 			String json = jsonParam.toString();
-			TestResponse res = request("PUT", json, "/updateUser");
+			TestResponse res = request("PUT", json, "/users");
 			assertEquals(200, res.status);
 			assertNotNull(res);
 		} catch (Exception e) {
@@ -98,7 +99,7 @@ public class UserControllerTest {
 	@Test
 	public void getUsersAll() {
 		try {
-			TestResponse res = request("GET", null, "/getAllUsers");
+			TestResponse res = request("GET", null, "/users");
 			User[] users = res.json();
 			assertEquals(200, res.status);
 			assertEquals("Suresha", users[0].getFirstName());

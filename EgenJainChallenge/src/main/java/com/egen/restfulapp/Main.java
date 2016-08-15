@@ -1,16 +1,16 @@
 package com.egen.restfulapp;
 
-import com.egen.restfullapp.service.UserServiceImpl;
+import com.egen.restfulapp.service.UserServiceImpl;
 
 /**
- * The Class Main.
+ * The Class Main is responsible to start spark server by passing port number and user service 
  *
  * @author ajain
  */
 public class Main {
 
 	/**
-	 * The main method.
+	 * The main method
 	 *
 	 * @param args
 	 *            the arguments

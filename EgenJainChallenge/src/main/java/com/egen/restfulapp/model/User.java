@@ -1,4 +1,4 @@
-package com.egen.restfullapp.model;
+package com.egen.restfulapp.model;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;

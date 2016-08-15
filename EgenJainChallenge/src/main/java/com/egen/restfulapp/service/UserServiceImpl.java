@@ -1,4 +1,4 @@
-package com.egen.restfullapp.service;
+package com.egen.restfulapp.service;
 
 import java.util.List;
 
@@ -8,13 +8,13 @@ import org.mongodb.morphia.Morphia;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.egen.restfullapp.model.Address;
-import com.egen.restfullapp.model.Company;
-import com.egen.restfullapp.model.User;
+import com.egen.restfulapp.model.Address;
+import com.egen.restfulapp.model.Company;
+import com.egen.restfulapp.model.User;
 import com.mongodb.MongoClient;
 
 /**
- * The Class UserServiceImpl.
+ * The Class UserServiceImpl implements methods present at interface Userface
  *
  * @author ajain
  */
@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
 	Datastore datastore = new Morphia().createDatastore(client, "user");
 
+	// Creates a new user
 	public String addpost(User user, Address address, Company company) {
 		User dbuser = getUserByEmail(user.getEmail());
 
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	// Returns a list of all users
 	public List<User> getAllPost() {
 
 		List<User> list = datastore.find(User.class).asList();
@@ -54,6 +56,7 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	// Returns a single user
 	public User getUserByEmail(String email) {
 		logger.info("Getting a user by email");
 		User user = datastore.find(User.class, "email", email).get();
@@ -65,6 +68,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	// Updates a specific user
 	public Integer updateUser(User user, Address address, Company company) {
 
 		User dbuser = getUserByEmail(user.getEmail());
@@ -81,5 +85,4 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	
 }
