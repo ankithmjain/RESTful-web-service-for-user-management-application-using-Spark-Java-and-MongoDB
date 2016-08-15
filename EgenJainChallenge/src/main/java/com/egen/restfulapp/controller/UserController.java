@@ -1,4 +1,4 @@
-package com.egen.restfulapp;
+package com.egen.restfulapp.controller;
 
 import static spark.Spark.get;
 import static spark.Spark.port;

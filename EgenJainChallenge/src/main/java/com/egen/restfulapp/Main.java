@@ -1,5 +1,6 @@
 package com.egen.restfulapp;
 
+import com.egen.restfulapp.controller.UserController;
 import com.egen.restfulapp.service.UserServiceImpl;
 
 /**
